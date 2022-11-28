@@ -1,0 +1,27 @@
+//classe astratta
+sealed class User(val id: String)
+
+//classi di dati
+data class Facebook(val email: String, val idF: String): User(idF)
+    
+data class Google(val email: String, val idG: String): User(idG)
+   
+data class Email(val password: String, val idE: String): User(idE)
+    
+
+    //funzione con il when
+    fun datiUser(user: User): String{
+        when(user){
+            is Facebook -> return "Hello ${user.id} - your email is: ${user.email}"
+            is Google -> return "Hello ${user.id} - your email is: ${user.email}"
+            is Email -> return "Hello ${user.id} - your password is: ${user.password}"
+        }
+    }
+
+    //stampa dei dati
+fun main() {
+    println (datiUser(Facebook("paolo@email.it", "Paolo")))
+    println (datiUser(Facebook("franca@email.it", "Franca")))
+    println (datiUser(Facebook("- FILLXXXC -", "Elisa")))
+    
+}
